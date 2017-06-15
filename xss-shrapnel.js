@@ -8,7 +8,7 @@
 // ==/UserScript==
 
 var payload = 'aaa"bbb\'ccc<ddd>eee'
-var regex = /aaa.*?eee/g							//	(new XMLSerializer().serializeToString(document)).match (/aaa.*?eee/g)
+var regex = /aaa.*?eee/g	//	(new XMLSerializer().serializeToString(document)).match (/aaa.*?eee/g)
 
 window.addEventListener 
 (
