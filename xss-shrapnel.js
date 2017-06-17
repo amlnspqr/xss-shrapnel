@@ -32,8 +32,6 @@ window.addEventListener
 			{
 				var parentForm = e.target.form
 				
-				bForceUrlEncoded && (parentForm.enctype = 'application/x-www-form-urlencoded')
-				
 				e.keyCode == 83 && submitForm (parentForm)
 				e.keyCode == 65 && fillForm (parentForm) && submitForm (parentForm)
 			}
@@ -48,7 +46,9 @@ function submitForm (form)
 	
 	for (var i = 0; i < form.length; i++)
 		aPostData.push (encodeURIComponent (form [i].name) + '=' + encodeURIComponent (form [i].value))
-		
+	
+	bForceUrlEncoded && (parentForm.enctype = 'application/x-www-form-urlencoded')
+	
 	confirm (form.action + '\r\n\r\n' + aPostData.join ('&')) && HTMLFormElement.prototype.submit.call (form)
 }
 
