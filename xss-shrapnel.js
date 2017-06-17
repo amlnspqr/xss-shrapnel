@@ -15,8 +15,6 @@ var iPayload = 0
 var aPayloads = ['aaa"bbb\'ccc<ddd>eee', 'aaa"bbb\'eee', 'aaa"eee']
 var regex = /aaa.*?eee/g
 
-var sPayload = aPayloads [iPayload]
-
 window.addEventListener
 (
 	'keydown', 
@@ -26,6 +24,9 @@ window.addEventListener
 		{
 			if (e.keyCode == 72)
 				bFillHiddenForms = parseInt (prompt ('Fill hidden forms?', bFillHiddenForms))
+			
+			if (e.keyCode == 80)
+				iPayload = parseInt (prompt ('Choose payload', iPayload)) % 3
 			
 			if ((e.target.tagName == 'INPUT' || e.target.tagName == 'TEXTAREA') && e.target.form)
 			{
@@ -54,7 +55,7 @@ function submitForm (form)
 function fillForm (form)
 {
 	for (var i = 0; i < form.length; i++)
-		form [i].type == 'file' || !bFillHiddenForms && form [i].type == 'hidden' || (form [i].value = sPayload)
+		form [i].type == 'file' || !bFillHiddenForms && form [i].type == 'hidden' || (form [i].value = aPayloads [iPayload])
 	
 	return 1
 }
