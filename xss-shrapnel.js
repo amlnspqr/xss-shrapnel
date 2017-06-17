@@ -48,7 +48,7 @@ function submitForm (form)
 function fillForm (form)
 {
 	for (var i = 0; i < form.length; i++)
-		form [i].type == 'file' || (form [i].value = sPayload)
+		form [i].type == 'file' || !bFillHiddenForms && form [i].type == 'hidden' || (form [i].value = sPayload)
 	
 	return 1
 }
