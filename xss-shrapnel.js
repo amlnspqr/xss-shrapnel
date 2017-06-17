@@ -45,7 +45,7 @@ function submitForm (form)
 	var aPostData = []
 	
 	for (var i = 0; i < form.length; i++)
-		aPostData.push (encodeURIComponent (form [i].name) + '=' + encodeURIComponent (form [i].value))
+		form [i].name && aPostData.push (encodeURIComponent (form [i].name) + '=' + encodeURIComponent (form [i].value))
 	
 	bForceUrlEncoded && (form.enctype = 'application/x-www-form-urlencoded')
 	
