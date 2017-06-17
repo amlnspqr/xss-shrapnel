@@ -49,7 +49,9 @@ function submitForm (form)
 	
 	bForceUrlEncoded && (form.enctype = 'application/x-www-form-urlencoded')
 	
-	confirm (form.action ? form.action : location.href + '\r\n\r\n' + aPostData.join ('&')) && HTMLFormElement.prototype.submit.call (form)
+	var sPostData = (form.action ? form.action : location.href) + '\r\n\r\n' + aPostData.join ('&')
+	
+	confirm (sPostData) && HTMLFormElement.prototype.submit.call (form)
 }
 
 function fillForm (form)
