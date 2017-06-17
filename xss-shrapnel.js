@@ -22,14 +22,20 @@ window.addEventListener
 	'keydown', 
 	function (e)
 	{
-		if ((e.altKey || e.modifiers) && (e.target.tagName == 'INPUT' || e.target.tagName == 'TEXTAREA') && e.target.form)
+		if (e.altKey || e.modifiers)
 		{
-			var parentForm = e.target.form
+			if (e.keyCode == 72)
+				bFillHiddenForms = parseInt (prompt ('Fill hidden forms?', bFillHiddenForms))
 			
-			bForceUrlEncoded && (parentForm.enctype = 'application/x-www-form-urlencoded')
-			
-			e.keyCode == 83 && submitForm (parentForm)
-			e.keyCode == 65 && fillForm (parentForm) && submitForm (parentForm)
+			if ((e.target.tagName == 'INPUT' || e.target.tagName == 'TEXTAREA') && e.target.form)
+			{
+				var parentForm = e.target.form
+				
+				bForceUrlEncoded && (parentForm.enctype = 'application/x-www-form-urlencoded')
+				
+				e.keyCode == 83 && submitForm (parentForm)
+				e.keyCode == 65 && fillForm (parentForm) && submitForm (parentForm)
+			}
 		}
 	}, 
 	false
