@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>POST XSS</title>
+		
+		<style>
+			.input
+			{
+				width: 50%;
+			}
+		</style>
+		
+		<script>
+			
+			function paramsToInputs (params)
+			{
+				params = params.replace (/\+/g, "%20").split ("&")
+				
+				params = params.filter
+				(
+					function (param)
+					{
+						return param.split ("=").length > 1
+					}
+				)
+				
+				params = params.map
+				(
+					function (param)
+					{
+						param = param.split ("=")
+						
+						var name = decodeURIComponent (param [0])
+						var value = decodeURIComponent (param [1])
+						
+						var input = document.createElement ("input")
+						
+						input.name = name
+						input.placeholder = name
+						input.value = value
+						input.className = "input"
+
+						return input
+					}
+				)
+				
+				return params
+			}
+			
+			function MakeForm (action, params)
+			{
+				if (!/^https?:\/\//.test (action))
+					return 0
+				
+				params = paramsToInputs (params)
+				
+				var form = document.createElement ("form")
+				
+				form.action = action
+				form.method = "POST"
+//				form.target = "_blank"
+				form.enctype = /\/m$/.test (location.pathname) ? "multipart/form-data" : "application/x-www-form-urlencoded"
+				
+				for (var i = 0; i < params.length; i++)
+					form.appendChild (params [i])
+				
+				var submit = document.createElement ("input")
+				
+				submit.type = "submit"
+				submit.value = "Send"
+				
+				form.appendChild (document.createElement ("br"))				
+				form.appendChild (submit)
+				
+				document.body.appendChild (form)
+			}
+			
+			function MakeFormManual ()
+			{
+				var action = document.getElementsByName ("action") [0].value
+				var params = decodeURI (document.getElementsByName ("params") [0].value)
+				
+				MakeForm (action, params)
+			}
+			
+			function MakeFormAuto ()
+			{
+				if (location.search)
+				{
+					var action = decodeURI (location.search.slice (1))
+					var params = decodeURI (location.hash.slice (1))
+					
+					if (/^https?:/.test (action))
+					{
+						MakeForm (action, params)
+
+						document.forms [0].submit ()
+					}
+				}
+			}
+			
+		</script>
+	</head>
+	<body onload="MakeFormAuto ()">
+		Action: <br /> <input name="action" class="input" /> <br />
+		Params: <br /> <textarea name="params" class="input"></textarea> <br />
+		<button onclick="MakeFormManual ()">Make</button> <br />
+	</body>
+</html>
