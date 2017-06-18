@@ -8,7 +8,7 @@
 // ==/UserScript==
 
 var bForceUrlEncoded = 1
-var bFillHiddenForms = 1
+var bFillHiddenForms = 0
 
 var iPayload = 0
 
@@ -49,9 +49,9 @@ function submitForm (form)
 	
 	bForceUrlEncoded && (form.enctype = 'application/x-www-form-urlencoded')
 	
-	var sPostData = (form.action ? form.action : location.href) + '\r\n\r\n' + aPostData.join ('&')
+	var sFormData = (form.action ? form.action : location.href) + (form.method == 'post' ? '\r\n\r\n' : '?') + aPostData.join ('&')
 	
-	confirm (sPostData) && HTMLFormElement.prototype.submit.call (form)
+	confirm (sFormData) && HTMLFormElement.prototype.submit.call (form)
 }
 
 function fillForm (form)
