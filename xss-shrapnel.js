@@ -51,7 +51,7 @@ function submitForm (form)
 	{
 		var sPostData = encodeURIComponent (form [i].name) + '=' + encodeURIComponent (form [i].value)
 		
-		form [i].name && aPostData.indexOf (sPostData) == -1 && aPostData.push ()
+		form [i].name && aPostData.indexOf (sPostData) == -1 && aPostData.push (sPostData)
 	}
 	
 	bForceUrlEncoded && (form.enctype = 'application/x-www-form-urlencoded')
