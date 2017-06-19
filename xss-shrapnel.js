@@ -67,7 +67,27 @@ function submitForm (form)
 function fillForm (form)
 {
 	for (var i = 0; i < form.length; i++)
-		form [i].type == 'file' || !bFillHiddenForms && form [i].type == 'hidden' || (form [i].value = aPayloads [iPayload])
+	{
+		var element = form [i]
+		var payload = aPayloads [iPayload]
+		
+		if (element.tagName == 'SELECT')
+		{
+			element.outerHTML = '<input name="' + htmlEncode (element.name) + '" value="' + htmlEncode (payload) + '" />'
+			
+			continue
+		}
+		
+		if (element.type == 'file' || !bFillHiddenForms && element.type == 'hidden')
+			continue
+			
+		element.value = payload
+	}
 	
 	return 1
+}
+
+function htmlEncode (str)
+{
+	return str.replace (/</g, '&lt;').replace (/>/g, '&gt;').replace (/"/g, '&quot;').replace (/'/g, '&#39;')
 }
