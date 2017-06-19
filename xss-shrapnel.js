@@ -12,7 +12,7 @@ var bFillHiddenForms = 0
 
 var iPayload = 0
 
-var aPayloads = ['aaa"bbb\'ccc<ddd>eee', 'aaa"bbb\'eee', 'aaa"eee']
+var aPayloads = ['aaa"bbb\'ccc<ddd>eee', 'aaa"bbb\'eee', 'aaa"eee', 'aaa\\"bbb\'ccc<ddd>eee</fff>']
 var regex = /aaa.*?eee/g
 
 window.addEventListener
@@ -26,7 +26,7 @@ window.addEventListener
 				bFillHiddenForms = parseInt (prompt ('Fill hidden forms?', bFillHiddenForms))
 			
 			if (e.keyCode == 80)
-				iPayload = parseInt (prompt ('Choose payload', iPayload)) % 3
+				iPayload = parseInt (prompt ('Choose payload', iPayload)) % aPayloads.length
 			
 			if ((e.target.tagName == 'INPUT' || e.target.tagName == 'TEXTAREA') && e.target.form)
 			{
