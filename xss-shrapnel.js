@@ -28,12 +28,15 @@ window.addEventListener
 			if (e.keyCode == 80)
 				iPayload = parseInt (prompt ('Choose payload', iPayload)) % aPayloads.length
 			
-			if ((e.target.tagName == 'INPUT' || e.target.tagName == 'TEXTAREA') && e.target.form)
+			if (e.keyCode == 83 || e.keyCode == 65)
 			{
-				var parentForm = e.target.form
-				
-				e.keyCode == 83 && submitForm (parentForm)
-				e.keyCode == 65 && fillForm (parentForm) && submitForm (parentForm)
+				if ((e.target.tagName == 'INPUT' || e.target.tagName == 'TEXTAREA') && e.target.form)
+				{
+					var parentForm = e.target.form
+
+					e.keyCode == 83 && submitForm (parentForm)
+					e.keyCode == 65 && fillForm (parentForm) && submitForm (parentForm)
+				}
 			}
 		}
 	}, 
@@ -45,11 +48,18 @@ function submitForm (form)
 	var aPostData = []
 	
 	for (var i = 0; i < form.length; i++)
-		form [i].name && aPostData.push (encodeURIComponent (form [i].name) + '=' + encodeURIComponent (form [i].value))
+	{
+		var sPostData = encodeURIComponent (form [i].name) + '=' + encodeURIComponent (form [i].value)
+		
+		form [i].name && aPostData.indexOf (sPostData) == -1 && aPostData.push ()
+	}
 	
 	bForceUrlEncoded && (form.enctype = 'application/x-www-form-urlencoded')
 	
-	var sFormData = (form.action ? form.action : location.href) + (form.method == 'post' ? '\r\n\r\n' : '?') + aPostData.join ('&')
+	var sFormAction = form.action ? form.action : location.href
+	var sDelimeter = form.method == 'post' ? '\r\n\r\n' : '?'
+	
+	var sFormData = sFormAction + sDelimeter + aPostData.join ('&')
 	
 	confirm (sFormData) && HTMLFormElement.prototype.submit.call (form)
 }
