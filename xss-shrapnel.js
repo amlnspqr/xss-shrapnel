@@ -71,14 +71,14 @@ function fillForm (form)
 		var element = form [i]
 		var payload = aPayloads [iPayload]
 		
-		if (element.tagName == 'SELECT')
+		if (element.tagName == 'SELECT' || element.type == 'file')
 		{
 			element.outerHTML = '<input name="' + htmlEncode (element.name) + '" value="' + htmlEncode (payload) + '" />'
 			
 			continue
 		}
 		
-		if (element.type == 'file' || !bFillHiddenForms && element.type == 'hidden')
+		if (!bFillHiddenForms && element.type == 'hidden')
 			continue
 			
 		element.value = payload
