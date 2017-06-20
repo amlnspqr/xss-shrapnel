@@ -23,10 +23,18 @@ window.addEventListener
 		if (e.altKey || e.modifiers)
 		{
 			if (e.keyCode == 72)
-				bFillHiddenForms = parseInt (prompt ('Fill hidden forms?', bFillHiddenForms))
+			{
+				var sPrompt = prompt ('Fill hidden forms?', bFillHiddenForms)
+				
+				sPrompt == null || (bFillHiddenForms = parseInt (sPrompt))
+			}
 			
 			if (e.keyCode == 80)
-				iPayload = parseInt (prompt ('Choose payload', iPayload)) % aPayloads.length
+			{
+				var sPrompt = prompt ('Choose payload', iPayload)
+				
+				sPrompt == null || (iPayload = parseInt (sPrompt) % aPayloads.length)
+			}
 			
 			if (e.keyCode == 83 || e.keyCode == 65)
 			{
