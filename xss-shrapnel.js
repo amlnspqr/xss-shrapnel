@@ -36,15 +36,12 @@ window.addEventListener
 				sPrompt == null || (iPayload = parseInt (sPrompt) % aPayloads.length)
 			}
 			
-			if (e.keyCode == 83 || e.keyCode == 65)
+			if (e.target.form)
 			{
-				if (e.target.form)
-				{
-					var parentForm = e.target.form
-
-					e.keyCode == 83 && submitForm (parentForm)
-					e.keyCode == 65 && fillForm (parentForm) && submitForm (parentForm)
-				}
+				var parentForm = e.target.form
+				
+				e.keyCode == 83 && submitForm (parentForm)
+				e.keyCode == 65 && fillForm (parentForm) && submitForm (parentForm)
 			}
 		}
 	}, 
