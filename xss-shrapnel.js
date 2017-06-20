@@ -38,7 +38,7 @@ window.addEventListener
 			
 			if (e.keyCode == 83 || e.keyCode == 65)
 			{
-				if ((e.target.tagName == 'INPUT' || e.target.tagName == 'TEXTAREA') && e.target.form)
+				if (e.target.form)
 				{
 					var parentForm = e.target.form
 
