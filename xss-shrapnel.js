@@ -66,7 +66,9 @@ window.addEventListener ('load', checkResults, false)
 
 function checkResults ()
 {
-	alert (document.getElementsByTagName ('html') [0].innerHTML.match (regex).join ('\r\n'))
+	var matches = document.getElementsByTagName ('html') [0].innerHTML.match (regex)
+	
+	matches instanceof Array && alert (matches.join ('\r\n\r\n'))
 }
 
 function submitForm (form)
