@@ -20,6 +20,7 @@ var aPayloads = ['aaa"bbb\'ccc<ddd>eee',
 		 'aaa\\"bbb\'ccc<ddd>fff</eee>']
 
 var regex = /aaa.*?eee/g
+//var regex = /.{0,10}aaa.*?eee.{0,10}/g
 
 window.addEventListener
 (
