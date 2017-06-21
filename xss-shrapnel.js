@@ -51,13 +51,19 @@ window.addEventListener
 			}
 			
 			if (e.keyCode == 82)
-			{
-				alert (document.getElementsByTagName ('html') [0].innerHTML.match (regex).join ('\r\n'))
-			}
+				checkResults ()
 		}
 	}, 
 	false
 )
+
+window.addEventListener ('DOMContentLoaded', checkResults, false)
+window.addEventListener ('load', checkResults, false)
+
+function checkResults ()
+{
+	alert (document.getElementsByTagName ('html') [0].innerHTML.match (regex).join ('\r\n'))
+}
 
 function submitForm (form)
 {
