@@ -40,6 +40,8 @@ window.addEventListener
 				var sPrompt = prompt ('Choose payload', iPayload)
 				
 				sPrompt == null || (iPayload = parseInt (sPrompt) % aPayloads.length)
+				
+				alert (aPayloads [iPayload])
 			}
 			
 			if (e.target.form)
