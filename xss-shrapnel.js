@@ -12,7 +12,13 @@ var bFillHiddenForms = 0
 
 var iPayload = 0
 
-var aPayloads = ['aaa"bbb\'ccc<ddd>eee', 'aaa"bbb\'eee', 'aaa"eee', 'aaa\\"bbb\'ccc<ddd>eee</fff>']
+var aPayloads = ['aaa"bbb\'ccc<ddd>eee', 
+		 'aaa"bbb\'eee', 
+		 'aaa"eee', 
+		 'aaa"bbb\'ccc>ddd<eee', 
+		 'aaa"bbb\'ccc<<ddd>ddd<ddd>>eee', 
+		 'aaa\\"bbb\'ccc<ddd>fff</eee>']
+
 var regex = /aaa.*?eee/g
 
 window.addEventListener
