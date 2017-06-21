@@ -43,6 +43,11 @@ window.addEventListener
 				e.keyCode == 83 && submitForm (parentForm)
 				e.keyCode == 65 && fillForm (parentForm) && submitForm (parentForm)
 			}
+			
+			if (e.keyCode == 82)
+			{
+				alert (document.getElementsByTagName ('html') [0].innerHTML.match (regex).join ('\r\n'))
+			}
 		}
 	}, 
 	false
