@@ -19,8 +19,8 @@ var aPayloads = ['aaa"bbb\'ccc<ddd>eee',
 		 'aaa"bbb\'ccc<<ddd>ddd<ddd>>eee', 
 		 'aaa\\"bbb\'ccc<ddd>fff</eee>']
 
-var regex = /aaa.*?eee/g
-var regex = /.{0,100}aaa.{0,50}?eee.{0,100}/g
+var regex = /aaa.*?eee/gi
+var regex = /.{0,100}aaa.{0,50}?eee.{0,100}/gi
 
 window.addEventListener
 (
