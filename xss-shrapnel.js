@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name        Submit form
+// @name        XSS Shrapnel
 // @namespace   *
-// @description Submit form
+// @description aaa"bbb'ccc<ddd>eee
 // @include     *
-// @version     1
+// @version     2.0
 // @grant       none
 // ==/UserScript==
 
@@ -20,7 +20,7 @@ var aPayloads = ['aaa"bbb\'ccc<ddd>eee',
 		 'aaa\\"bbb\'ccc<ddd>fff</eee>']
 
 var regex = /aaa.*?eee/g
-var regex = /.{0,100}aaa.{0,40}?eee.{0,100}/g
+var regex = /.{0,100}aaa.{0,50}?eee.{0,100}/g
 
 window.addEventListener
 (
@@ -66,6 +66,8 @@ window.addEventListener ('load', checkResults, false)
 function checkResults ()
 {
 	var matches = document.getElementsByTagName ('html') [0].innerHTML.match (regex)
+	
+	//	str.split (/([\s\S]{50})/).filter (function (x) {return x})
 	
 	matches instanceof Array && alert (matches.join ('\r\n\r\n'))
 }
