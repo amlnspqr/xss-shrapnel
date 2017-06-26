@@ -42,7 +42,7 @@ window.addEventListener
 				
 				sPrompt == null || (iPayload = parseInt (sPrompt) % aPayloads.length)
 				
-				alert (aPayloads [iPayload])
+				prompt ('Payload', aPayloads [iPayload])
 			}
 			
 			if (e.target.form)
