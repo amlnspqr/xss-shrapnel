@@ -40,7 +40,17 @@ window.addEventListener
 			{
 				var sPrompt = prompt ('Choose payload', iPayload)
 				
-				sPrompt == null || (iPayload = parseInt (sPrompt) % aPayloads.length)
+				if (sPrompt !== null)
+				{
+					if (isNaN (+sPrompt))
+					{
+						aPayloads.push (sPrompt)
+						
+						iPayload = aPayloads.indexOf (sPrompt)
+					}
+					else
+						iPayload = parseInt (sPrompt) % aPayloads.length
+				}
 				
 				prompt ('Payload', aPayloads [iPayload])
 			}
