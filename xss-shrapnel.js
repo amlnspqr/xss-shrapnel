@@ -70,9 +70,12 @@ function checkResults ()
 {
 	var matches = document.getElementsByTagName ('html') [0].innerHTML.match (regex)
 	
-	//	str.split (/([\s\S]{50})/).filter (function (x) {return x})
-	
-	matches instanceof Array && alert (matches.join ('\r\n\r\n'))
+	if (matches instanceof Array)
+	{
+		matches = matches.join ('\r\n\r\n').split (/([\s\S]{10000})/)
+		
+		matches.forEach (function (i) {i && alert (i)})
+	}
 }
 
 function fillForms ()
