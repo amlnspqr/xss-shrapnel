@@ -100,7 +100,9 @@ function submitForm (form)
 	
 	bForceUrlEncoded && (form.enctype = 'application/x-www-form-urlencoded')
 	
-	var sFormAction = form.action ? form.action : location.protocol + '//' + location.host + location.pathname
+	//	form.getAttribute ('action')
+	
+	var sFormAction = form.action ? form.action : location.origin + location.pathname
 	var sDelimeter = form.method == 'post' ? '\r\n\r\n' : '?'
 	
 	var sFormData = sFormAction + sDelimeter + aPostData.join ('&')
