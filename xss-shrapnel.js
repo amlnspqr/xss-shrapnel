@@ -1,9 +1,22 @@
-// ==UserScript==
+
+
+function fillForms ()
+{
+	for (var i = 0; i < document.forms.length; i++)
+	{
+		var form = document.forms [i]
+		
+		form.target = '_blank'
+		
+		fillForm (form) && submitForm (form)
+	}
+}
+/ ==UserScript==
 // @name        XSS Shrapnel
 // @namespace   *
 // @description aaa"bbb'ccc<ddd>eee
 // @include     *
-// @version     2.0
+// @version     2.1
 // @grant       none
 // ==/UserScript==
 
@@ -53,6 +66,9 @@ window.addEventListener
 				e.keyCode == 65 && fillForm (parentForm) && submitForm (parentForm)
 			}
 			
+			if (e.keyCode == 70)
+				fillForms ()
+			
 			if (e.keyCode == 82)
 				checkResults ()
 		}
@@ -70,6 +86,18 @@ function checkResults ()
 	//	str.split (/([\s\S]{50})/).filter (function (x) {return x})
 	
 	matches instanceof Array && alert (matches.join ('\r\n\r\n'))
+}
+
+function fillForms ()
+{
+	for (var i = 0; i < document.forms.length; i++)
+	{
+		var form = document.forms [i]
+		
+		form.target = '_blank'
+		
+		fillForm (form) && submitForm (form)
+	}
 }
 
 function submitForm (form)
