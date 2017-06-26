@@ -1,22 +1,9 @@
-
-
-function fillForms ()
-{
-	for (var i = 0; i < document.forms.length; i++)
-	{
-		var form = document.forms [i]
-		
-		form.target = '_blank'
-		
-		fillForm (form) && submitForm (form)
-	}
-}
-/ ==UserScript==
+// ==UserScript==
 // @name        XSS Shrapnel
 // @namespace   *
 // @description aaa"bbb'ccc<ddd>eee
 // @include     *
-// @version     2.1
+// @version     2.0
 // @grant       none
 // ==/UserScript==
 
