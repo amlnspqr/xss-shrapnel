@@ -17,7 +17,7 @@ var aPayloads = ['aaa"bbb\'ccc<ddd>eee',
 		 'aaa"eee', 
 		 'aaa"bbb\'ccc>ddd<eee', 
 		 'aaa"bbb\'ccc<<ddd>ddd<ddd>>eee', 
-		 'aaa\\"bbb\'ccc<ddd>fff</eee>']
+		 'aaa\\"bbb\\\'ccc<ddd>fff</eee>']
 
 var regex = /aaa.*?eee/gi
 var regex = /.{0,100}aaa.{0,50}?eee.{0,100}/gi
