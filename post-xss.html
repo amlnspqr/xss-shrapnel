@@ -49,6 +49,9 @@
 			
 			function MakeForm (action, params)
 			{
+				action = action.trim ()
+				params = params.trim ()
+				
 				if (!/^https?:\/\//.test (action))
 					return 0
 				
