@@ -33,7 +33,7 @@
 						var name = decodeURIComponent (param [0])
 						var value = decodeURIComponent (param [1])
 						
-						var input = document.createElement ("input")
+						var input = document.createElement (value.indexOf ("\n") + 1 ? "textarea" : "input")
 						
 						input.name = name
 						input.placeholder = name
