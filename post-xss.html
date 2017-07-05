@@ -76,6 +76,8 @@
 				form.appendChild (submit)
 				
 				document.body.appendChild (form)
+				
+				return 1
 			}
 			
 			function MakeFormManual ()
@@ -93,12 +95,7 @@
 					var action = decodeURI (location.search.slice (1))
 					var params = decodeURI (location.hash.slice (1))
 					
-					if (/^https?:/.test (action))
-					{
-						MakeForm (action, params)
-
-						document.forms [0].submit ()
-					}
+					MakeForm (action, params) && document.forms [0].submit ()
 				}
 			}
 			
