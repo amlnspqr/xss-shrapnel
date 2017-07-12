@@ -28,7 +28,7 @@ var aPayloads = ['aaa"bbb\'ccc<ddd>eee',
 		 'aaa"><object allowscriptaccess="always" data="http://spqr.zz.mu/xss.swf"></object>eee', 
 		 'aaa"><a href=data:xxx;base64,PHNjcmlwdD5hbGVydChkb2N1bWVudC5kb21haW4pPC9zY3JpcHQ+>XSS</a>eee']
 
-var regex = /.{0,100}aaa.{0,100}?eee.{0,100}/gi
+var regex = /.{0,100}aaa.{0,130}?eee.{0,100}/gi
 
 window.addEventListener
 (
@@ -127,7 +127,7 @@ function submitForm (form)
 	//		sFormAction = /\/\//.test (sFormAction) ? location.protocol + sFormAction : location.origin + sFormAction
 	
 	var sFormAction = form.action ? form.action : location.origin + location.pathname
-	var sDelimeter = form.method == 'post' ? '\r\n\r\n' : '?'
+	var sDelimeter = form.getAttribute ('method').toLowerCase () == 'post' ? '\r\n\r\n' : '?'
 	
 	var sFormData = sFormAction + sDelimeter + aPostData.join ('&')
 	
