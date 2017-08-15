@@ -95,7 +95,7 @@
 					var action = decodeURI (location.search.slice (1))
 					var params = decodeURI (location.hash.slice (1))
 					
-					MakeForm (action, params) && document.forms [0].submit ()
+					MakeForm (action, params) && HTMLFormElement.prototype.submit.call (document.forms [0])
 				}
 			}
 			
