@@ -3,7 +3,7 @@
 // @namespace   *
 // @description aaa"bbb'ccc<ddd>zzz
 // @include     *
-// @version     2.4
+// @version     2.5
 // @grant       none
 // ==/UserScript==
 
