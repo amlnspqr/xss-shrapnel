@@ -12,9 +12,9 @@ var bFillHiddenForms = 0
 
 var iPayload = 0
 
-var aPayloads = ['aaa"bbb\'ccc<ddd>zzz', 
-		 'aaa"bbb\'zzz', 
-		 'aaa"zzz', 
+var aPayloads = ['aaa"bbb\'{{3*3}}<ddd>zzz', 
+		 'aaa"{{3*3}}\'zzz', 
+		 'aaa"{{3*3}}zzz', 
 		 'aaa\\"bbb\\\'>ccc<<ddd>ddd<ddd>>zzz<fff', 
 		 'aaa\\"bbb\\\'ccc<ddd >zzz</fff>', 
 		 '</title></textarea>aaa"bbb\'ccc<ddd>zzz', 
