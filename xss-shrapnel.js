@@ -129,13 +129,12 @@ function submitForm (form)
 	
 	bForceUrlEncoded && (form.enctype = 'application/x-www-form-urlencoded')
 	
-	//	var sFormAction = form.getAttribute ('action')
-	//
-	//	if (!/^https?:\/\//.test (sFormAction))
-	//		sFormAction = /\/\//.test (sFormAction) ? location.protocol + sFormAction : location.origin + sFormAction
+	var sFormAction = form.action
+	var bFormIsPost = form.getAttribute ('method').toLowerCase () == 'post'
 	
-	var sFormAction = form.action ? form.action : location.origin + location.pathname
-	var sDelimeter = form.getAttribute ('method').toLowerCase () == 'post' ? '\r\n\r\n' : '?'
+	sFormAction = sFormAction ? (typeof sFormAction == 'string' ? sFormAction : form.getAttribute ('action')) : (bFormIsPost ? location.href : location.origin + location.pathname)
+	
+	var sDelimeter = bFormIsPost ? '\r\n\r\n' : '?'
 	
 	var sFormData = sFormAction + sDelimeter + aPostData.join ('&')
 	
