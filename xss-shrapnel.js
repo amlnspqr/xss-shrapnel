@@ -3,7 +3,7 @@
 // @namespace   *
 // @description aaa"bbb'ccc<ddd>zzz
 // @include     *
-// @version     2.5
+// @version     2.6
 // @grant       none
 // ==/UserScript==
 
@@ -129,10 +129,9 @@ function submitForm (form)
 	
 	bForceUrlEncoded && (form.enctype = 'application/x-www-form-urlencoded')
 	
-	var sFormAction = form.action
 	var bFormIsPost = form.getAttribute ('method').toLowerCase () == 'post'
-	
-	sFormAction = sFormAction ? (typeof sFormAction == 'string' ? sFormAction : form.getAttribute ('action')) : (bFormIsPost ? location.href : location.origin + location.pathname)
+	var sFormAction = typeof form.action == 'string' && form.action || form.getAttribute ('action')
+	sFormAction = sFormAction || (bFormIsPost ? location.href : location.origin + location.pathname)
 	
 	var sDelimeter = bFormIsPost ? '\r\n\r\n' : '?'
 	
