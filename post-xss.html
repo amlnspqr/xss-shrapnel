@@ -30,8 +30,8 @@
 					{
 						param = param.split ("=")
 						
-						var name = decodeURIComponent (param [0])
-						var value = decodeURIComponent (param [1])
+						var name = param.shift ()
+						var value = param.join ('=')
 						
 						var input = document.createElement (value.indexOf ("\n") + 1 ? "textarea" : "input")
 						
