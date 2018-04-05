@@ -3,12 +3,13 @@
 // @namespace   *
 // @description aaa"bbb'{{3*3}}<ddd>zzz
 // @include     *
-// @version     2.7
+// @version     2.8
 // @grant       none
 // ==/UserScript==
 
 var bForceUrlEncoded = 1
 var bFillHiddenForms = 0
+var bNumberedPayloads = 0
 
 var iPayload = 0
 
@@ -51,6 +52,13 @@ window.addEventListener
 				var sPrompt = prompt ('Fill hidden forms?', bFillHiddenForms)
 				
 				sPrompt === null || (bFillHiddenForms = parseInt (sPrompt))
+			}
+			
+			if (e.keyCode == 78)
+			{
+				var sPrompt = prompt ('Numbered payloads', bNumberedPayloads)
+				
+				sPrompt === null || (bNumberedPayloads = parseInt (sPrompt))
 			}
 			
 			if (e.keyCode == 80)
@@ -152,6 +160,8 @@ function fillForm (form)
 	{
 		var element = form [i]
 		var payload = aPayloads [iPayload]
+		
+		bNumberedPayloads && (payload += i)
 		
 		if (element.tagName == 'SELECT' || element.type == 'file')
 		{
