@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name        XSS Shrapnel
 // @namespace   *
-// @description aaa"bbb'{{3*3}}<ddd>zzz
+// @description aaa"${2*2}'{{3*3}}<ddd>zzz
 // @include     *
-// @version     2.8
+// @version     2.9
 // @grant       none
 // ==/UserScript==
 
@@ -13,8 +13,8 @@ var bNumberedPayloads = 0
 
 var iPayload = 0
 
-var aPayloads = ['aaa"bbb\'{{3*3}}<ddd>zzz', 
-		 'aaa"{{3*3}}\'zzz', 
+var aPayloads = ['aaa"${2*2}\'{{3*3}}<ddd>zzz', 
+		 'aaa"${2*2}{{3*3}}\'zzz', 
 		 'aaa"{{3*3}}zzz', 
 		 'aaa\\"bbb\\\'>ccc<<ddd>ddd<ddd>>zzz<fff <fff', 
 		 'aaa\\"bbb\\\'ccc<ddd >zzz</fff>', 
