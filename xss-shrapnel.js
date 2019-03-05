@@ -3,7 +3,7 @@
 // @namespace   *
 // @description aaa"${2*2}'{{3*3}}<ddd>zzz
 // @include     *
-// @version     2.9
+// @version     2.10
 // @grant       none
 // ==/UserScript==
 
@@ -109,7 +109,7 @@ window.addEventListener ('load', checkResults, false)
 
 function checkResults ()
 {
-	var matches = document.getElementsByTagName ('html') [0].innerHTML.match (regex)
+	var matches = document.getElementsByTagName ('html') [0].outerHTML.match (regex)
 	
 	if (matches instanceof Array)
 	{
