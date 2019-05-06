@@ -3,7 +3,7 @@
 // @namespace   *
 // @description aaa"${2*2}'{{3*3}}<ddd>zzz
 // @include     *
-// @version     2.10
+// @version     2.11
 // @grant       none
 // ==/UserScript==
 
@@ -84,6 +84,11 @@ window.addEventListener
 				}
 				
 				prompt ('Payload', aPayloads [iPayload])
+			}
+			
+			if (e.keyCode == 67)
+			{
+				e.target.value = aPayloads [iPayload]
 			}
 			
 			if (e.target.form)
