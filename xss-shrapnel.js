@@ -3,7 +3,7 @@
 // @namespace   *
 // @description aaa"${2*2}'{{3*3}}<ddd>zzz
 // @include     *
-// @version     2.11
+// @version     2.12
 // @grant       none
 // ==/UserScript==
 
