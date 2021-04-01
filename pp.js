@@ -46,7 +46,7 @@ window.addEventListener ('DOMContentLoaded', i => aPayloads.forEach (checkFrames
 
 function checkFrames (sPayload, i)
 {
-	var ppUrl = buildURL (sPayload.endsWith ('"}') ? sPayload.replace (/"\}$/, i + '"}') : sPayload + i)
+	var ppUrl = buildURL (sPayload.replace ('ppaaazzzv', 'ppaaazzzv' + i))
 
 	var ppFrame = document.createElement ('iframe')
 	var ppName = 'ppframexxx' + i
@@ -88,16 +88,16 @@ function checkFrames (sPayload, i)
 		sPayload.startsWith ('?') || sPayload.startsWith ('#') || (sPayload = '?' + sPayload)
 		
 		return	location.origin
-					+
-				location.pathname
-					+ 
-				(
-					sPayload.startsWith ('?')
-						?
-					(location.search ? location.search + '&' + sPayload.slice (1): sPayload) + location.hash
-						:
-					location.search + (location.hash ? location.hash + '&' + sPayload.slice (1): sPayload)
-				)
+				+
+			location.pathname
+				+ 
+			(
+				sPayload.startsWith ('?')
+					?
+				(location.search ? location.search + '&' + sPayload.slice (1): sPayload) + location.hash
+					:
+				location.search + (location.hash ? location.hash + '&' + sPayload.slice (1): sPayload)
+			)
 	}
 }
 
