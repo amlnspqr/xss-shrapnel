@@ -2,7 +2,7 @@
 // @name        pp.js
 // @namespace   *
 // @include     *
-// @version     1
+// @version     1.2
 // @grant       GM_addStyle
 // ==/UserScript==
 
@@ -61,7 +61,7 @@ function checkFrames (sPayload, i)
 
 	function checkFrame ()
 	{
-		var frPolluted = window.frames [ppName]
+		var frPolluted = unsafeWindow.frames [ppName]
 		
 		try
 		{
@@ -112,12 +112,23 @@ function checkVars (e)
 		aCookiePayloads.forEach (k => unsafeWindow [k] && alert (oCookiePayloads [k]))
 		
 		unsafeWindow.ppaaazzzn && alert (location.href)
+		
+		for (var i = 0; i < unsafeWindow.frames.length; i++)
+		{
+			var ppFrame = unsafeWindow.frames [i]
+			
+			try
+			{
+				ppFrame.ppaaazzzn && alert (ppFrame.location.href)
+			}
+			catch (e)
+			{
+			}
+		}
 	}
 }
 
 window.addEventListener ('DOMContentLoaded', checkVars, false)
 window.addEventListener ('load', checkVars, false)
 
-window.addEventListener ('keydown', checkVars, false)
-
-window.setTimeout (checkVars, 10000)
+window.setInterval (checkVars, 10000)
