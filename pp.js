@@ -119,7 +119,7 @@ function checkVars (e)
 			
 			try
 			{
-				ppFrame.ppaaazzzn && alert (ppFrame.location.href)
+				ppFrame.ppaaazzzn && alert (decodeURI (ppFrame.location.href))
 			}
 			catch (e)
 			{
