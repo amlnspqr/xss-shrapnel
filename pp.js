@@ -2,7 +2,7 @@
 // @name        pp.js
 // @namespace   *
 // @include     *
-// @version     1.2
+// @version     1.3
 // @grant       GM_addStyle
 // ==/UserScript==
 
@@ -23,7 +23,7 @@ var aPayloads =
 	'?__proto__={"ppaaazzzn":"ppaaazzzv"}', 
 	'?constructor.prototype={"ppaaazzzn":"ppaaazzzv"}', 
 	'?xxx={"__proto__":{"ppaaazzzn":"ppaaazzzv"}}', 
-	'?xxx={"constructor.prototype":{"ppaaazzzn":"ppaaazzzv"}}', 
+	'?xxx={"constructor":{"prototype":{"ppaaazzzn":"ppaaazzzv"}}}', 
 	'?xxx=yyy&xxx[__proto__][__proto__][ppaaazzzn]=ppaaazzzv', 
 	'?xxx=yyy&xxx.__proto__.__proto__.ppaaazzzn=ppaaazzzv'
 ]
